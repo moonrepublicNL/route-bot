@@ -1,0 +1,10 @@
+{
+  "file": "rebel_Ritten overzicht 2024.11.01-2025.11.11.csv",
+  "rows": 5847,
+  "date_min": "2024-11-01",
+  "date_max": "2025-11-11",
+  "buses": [
+    "Rebel"
+  ],
+  "missing_coords": 5847
+}

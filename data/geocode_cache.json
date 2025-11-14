@@ -1,0 +1,654 @@
+{
+  "Nieuwpoortstraat 94, Amsterdam, NL": {
+    "lat": 52.3841974,
+    "lon": 4.8569195
+  },
+  "Portsmuiden 11, Amsterdam, NL": {
+    "lat": 52.3904711,
+    "lon": 4.7855078
+  },
+  "Singel 452, Amsterdam, NL": {
+    "lat": 52.3677079,
+    "lon": 4.888626
+  },
+  "Keizersgracht 516, Amsterdam, NL": {
+    "lat": 52.3655957,
+    "lon": 4.8864768
+  },
+  "Prinsengracht 504, Amsterdam, NL": {
+    "lat": 52.3638399,
+    "lon": 4.8857623
+  },
+  "Kerkstraat 59, Amsterdam, NL": {
+    "lat": 52.3651178,
+    "lon": 4.8861151
+  },
+  "Lange Leidsedwarsstraat 3, Amsterdam, NL": {
+    "lat": 52.3651748,
+    "lon": 4.8826639
+  },
+  "Paulus Potterstraat 20, Amsterdam, NL": {
+    "lat": 52.3589753,
+    "lon": 4.8809731
+  },
+  "Frans Halsstraat 110, Amsterdam, NL": {
+    "lat": 52.3546921,
+    "lon": 4.8882584
+  },
+  "Andreas Bonnstraat 46, Amsterdam, NL": {
+    "lat": 52.3592117,
+    "lon": 4.9142352
+  },
+  "De Groene Zoom, Amsterdam, NL": {
+    "lat": 52.3941363,
+    "lon": 4.953163
+  },
+  "Stadionplein 18, Amsterdam, NL": {
+    "lat": 52.3441243,
+    "lon": 4.855954
+  },
+  "Helicopterstraat 19, Amsterdam, NL": {
+    "lat": 52.3408667,
+    "lon": 4.8448616
+  },
+  "Schiphol Boulevard 103, Schiphol, NL": {
+    "lat": 52.3085832,
+    "lon": 4.7595606
+  },
+  "Groenelaan, Amstelveen, NL": {
+    "lat": 52.2946601,
+    "lon": 4.8721411
+  },
+  "Maalderij 30, Amstelveen, NL": {
+    "lat": 52.2896048,
+    "lon": 4.8405999
+  },
+  "Turfschip 173, Amstelveen, NL": {
+    "lat": 52.2792714,
+    "lon": 4.867731
+  },
+  "Grutterij 26, Amstelveen, NL": {
+    "lat": 52.2807741,
+    "lon": 4.834121
+  },
+  "Turfschip 282, Amstelveen, NL": {
+    "lat": 52.2794418,
+    "lon": 4.8670161
+  },
+  "Portsmuiden 9, Amsterdam, NL": {
+    "lat": 52.3906151,
+    "lon": 4.78555
+  },
+  "Bolstoen 2, Amsterdam, NL": {
+    "lat": 52.3915694,
+    "lon": 4.7876378
+  },
+  "Willemsparkweg 166, Amsterdam, NL": {
+    "lat": 52.3560982,
+    "lon": 4.8703194
+  },
+  "Bilderdijkstraat 99, Amsterdam, NL": {
+    "lat": 52.3691159,
+    "lon": 4.871137
+  },
+  "Lange Leidsedwarsstraat 36, Amsterdam, NL": {
+    "lat": 52.3652197,
+    "lon": 4.882605
+  },
+  "Keizersgracht 224, Amsterdam, NL": {
+    "lat": 52.3764101,
+    "lon": 4.8872339
+  },
+  "Eerste Boomdwarsstraat 59, Amsterdam, NL": {
+    "lat": 52.378873,
+    "lon": 4.8848732
+  },
+  "Rozengracht 114, Amsterdam, NL": {
+    "lat": 52.3732138,
+    "lon": 4.8792043
+  },
+  "Herengracht 289, Amsterdam, NL": {
+    "lat": 52.3708569,
+    "lon": 4.8872839
+  },
+  "Singel 296, Amsterdam, NL": {
+    "lat": 52.3198246,
+    "lon": 4.9462314
+  },
+  "Romeinsarmsteeg 6, Amsterdam, NL": {
+    "lat": 52.3712805,
+    "lon": 4.8875726
+  },
+  "Begijnhof 41, Amsterdam, NL": {
+    "lat": 52.369098,
+    "lon": 4.8901521
+  },
+  "Prins Hendrikkade 194, Amsterdam, NL": {
+    "lat": 52.3710039,
+    "lon": 4.9120684
+  },
+  "Prins Hendrikkade 56, Amsterdam, NL": {
+    "lat": 52.3764315,
+    "lon": 4.8997383
+  },
+  "Damrak 1, Amsterdam, NL": {
+    "lat": 52.3770941,
+    "lon": 4.8979782
+  },
+  "Rokin 75, Amsterdam, NL": {
+    "lat": 52.3705304,
+    "lon": 4.8929994
+  },
+  "Back-Upstraat 32, Amsterdam, NL": {
+    "lat": 52.4148015,
+    "lon": 4.8745485
+  },
+  "Bolstoen 4, Amsterdam, NL": {
+    "lat": 52.3911301,
+    "lon": 4.7878494
+  },
+  "Jan Pieter Heijestraat 94, Amsterdam, NL": {
+    "lat": 52.3637871,
+    "lon": 4.8631092
+  },
+  "Rusthofstraat 38, Amsterdam, NL": {
+    "lat": 52.3451339,
+    "lon": 4.9249464
+  },
+  "Ferdinand Bolstraat 11, Amsterdam, NL": {
+    "lat": 52.3565161,
+    "lon": 4.8908377
+  },
+  "Lange Leidsedwarsstraat 52, Amsterdam, NL": {
+    "lat": 52.3650143,
+    "lon": 4.8829156
+  },
+  "Nieuwmarkt 26, Amsterdam, NL": {
+    "lat": 52.3724981,
+    "lon": 4.8995992
+  },
+  "Johan Van Hasseltweg 73, Amsterdam, NL": {
+    "lat": 52.3869503,
+    "lon": 4.9247512
+  },
+  "Gedempt Hamerkanaal 79, Amsterdam, NL": {
+    "lat": 52.3839406,
+    "lon": 4.9219765
+  },
+  "Overhoeksplein 2, Amsterdam, NL": {
+    "lat": 52.3841398,
+    "lon": 4.9029914
+  },
+  "Portsmuiden 18, Amsterdam, NL": {
+    "lat": 52.3904558,
+    "lon": 4.7842741
+  },
+  "Portsmuiden 14, Amsterdam, NL": {
+    "lat": 52.3904214,
+    "lon": 4.7845683
+  },
+  "Transformatorweg 37, Amsterdam, NL": {
+    "lat": 52.3914316,
+    "lon": 4.8499785
+  },
+  "De Clercqstraat 30, Amsterdam, NL": {
+    "lat": 52.3713333,
+    "lon": 4.8714645
+  },
+  "Sarphatistraat 29, Amsterdam, NL": {
+    "lat": 52.3607758,
+    "lon": 4.9052926
+  },
+  "Gerard Doustraat 224, Amsterdam, NL": {
+    "lat": 52.3569225,
+    "lon": 4.8973343
+  },
+  "Eerste Van Der Helststraat 46, Amsterdam, NL": {
+    "lat": 52.3563005,
+    "lon": 4.8924532
+  },
+  "Stadhouderskade 77, Amsterdam, NL": {
+    "lat": 52.3579555,
+    "lon": 4.8906939
+  },
+  "Quellijnstraat 77, Amsterdam, NL": {
+    "lat": 52.3568019,
+    "lon": 4.8919926
+  },
+  "Tweede Van Der Helststraat 72, Amsterdam, NL": {
+    "lat": 52.3491001,
+    "lon": 4.8943094
+  },
+  "George Gershwinlaan 24, Amsterdam, NL": {
+    "lat": 52.3360911,
+    "lon": 4.8743967
+  },
+  "Anthony Fokkerweg 3, Amsterdam, NL": {
+    "lat": 52.3448289,
+    "lon": 4.8425825
+  },
+  "Polonceau-Kade 27, Amsterdam, NL": {
+    "lat": 52.3857607,
+    "lon": 4.8726833
+  },
+  "Portsmuiden 15, Amsterdam, NL": {
+    "lat": 52.389896,
+    "lon": 4.785545
+  },
+  "Portsmuiden 13, Amsterdam, NL": {
+    "lat": 52.3901387,
+    "lon": 4.7855417
+  },
+  "Elektronstraat 12, Amsterdam, NL": {
+    "lat": 52.3929103,
+    "lon": 4.8537595
+  },
+  "Lindengracht 4, Amsterdam, NL": {
+    "lat": 52.3803765,
+    "lon": 4.8869126
+  },
+  "Rapenburg 16, Amsterdam, NL": {
+    "lat": 52.3717229,
+    "lon": 4.9076115
+  },
+  "Reguliersdwarsstraat 107, Amsterdam, NL": {
+    "lat": 52.366006,
+    "lon": 4.8942536
+  },
+  "Kerkstraat 69, Amsterdam, NL": {
+    "lat": 52.3642363,
+    "lon": 4.9054461
+  },
+  "Prinsengracht 424, Amsterdam, NL": {
+    "lat": 52.3662007,
+    "lon": 4.8823021
+  },
+  "Prinsengracht 529, Amsterdam, NL": {
+    "lat": 52.3690321,
+    "lon": 4.8829727
+  },
+  "Keizersgracht 231, Amsterdam, NL": {
+    "lat": 52.3724664,
+    "lon": 4.8852987
+  },
+  "Singel 85, Amsterdam, NL": {
+    "lat": 52.376223,
+    "lon": 4.891673
+  },
+  "Zeedijk 33, Amsterdam, NL": {
+    "lat": 52.3755716,
+    "lon": 4.9010328
+  },
+  "Chrysantenstraat 8, Amsterdam, NL": {
+    "lat": 52.3915541,
+    "lon": 4.9042678
+  },
+  "Portsmuiden 46, Amsterdam, NL": {
+    "lat": 52.3897591,
+    "lon": 4.7851209
+  },
+  "Tijnmuiden 43, Amsterdam, NL": {
+    "lat": 52.3913655,
+    "lon": 4.7793697
+  },
+  "De Hoef Westzijde 31, De Hoef, NL": {
+    "lat": 52.2102563,
+    "lon": 4.8122329
+  },
+  "De Hoef Oostzijde 42, De Hoef, NL": {
+    "lat": 52.2036817,
+    "lon": 4.8155062
+  },
+  "Hofland 212, Mijdrecht, NL": {
+    "lat": 52.2169346,
+    "lon": 4.871955
+  },
+  "Van Sijpesteijnkade 3, Utrecht, NL": {
+    "lat": 52.0908222,
+    "lon": 5.1067798
+  },
+  "Tolsteegsingel 32, Utrecht, NL": {
+    "lat": 52.08205,
+    "lon": 5.1266332
+  },
+  "Herculesplein 381, Utrecht, NL": {
+    "lat": 52.0787556,
+    "lon": 5.1445165
+  },
+  "Hamburgerstraat 18, Utrecht, NL": {
+    "lat": 52.0886226,
+    "lon": 5.1223731
+  },
+  "Kintgenshaven 5, Utrecht, NL": {
+    "lat": 52.0927975,
+    "lon": 5.1194194
+  },
+  "Oudegracht 139, Utrecht, NL": {
+    "lat": 52.0915141,
+    "lon": 5.1174991
+  },
+  "Lange Koestraat 39, Utrecht, NL": {
+    "lat": 52.0935638,
+    "lon": 5.1130097
+  },
+  "Voorstraat 19, Utrecht, NL": {
+    "lat": 52.0942016,
+    "lon": 5.1194085
+  },
+  "Willem Van Noortstraat 108, Utrecht, NL": {
+    "lat": 52.1014767,
+    "lon": 5.1211543
+  },
+  "Dorpsstraat 6, Oud Zuilen, NL": {
+    "lat": 52.1265909,
+    "lon": 5.0715101
+  },
+  "Floraweg 25, Utrecht, NL": {
+    "lat": 52.1209323,
+    "lon": 5.0382248
+  },
+  "Rijksweg A2 Westzijde 3, Breukelen, NL": {
+    "lat": 52.1432887,
+    "lon": 5.0002445
+  },
+  "Keurenplein 5, Amsterdam, NL": {
+    "lat": 52.360529,
+    "lon": 4.7847688
+  },
+  "Abberdaan 200, Amsterdam, NL": {
+    "lat": 52.3922066,
+    "lon": 4.78569
+  },
+  "Westerstraat 100, Amsterdam, NL": {
+    "lat": 52.3786434,
+    "lon": 4.883774
+  },
+  "Herengracht 283, Amsterdam, NL": {
+    "lat": 52.3710366,
+    "lon": 4.8873263
+  },
+  "Spuistraat 174, Amsterdam, NL": {
+    "lat": 52.3726812,
+    "lon": 4.8893777
+  },
+  "Spuistraat 172, Amsterdam, NL": {
+    "lat": 52.3728113,
+    "lon": 4.8893528
+  },
+  "Spuistraat 1, Amsterdam, NL": {
+    "lat": 52.3704303,
+    "lon": 4.8892798
+  },
+  "Dam 15, Amsterdam, NL": {
+    "lat": 52.3725215,
+    "lon": 4.8941519
+  },
+  "Geldersekade 80, Amsterdam, NL": {
+    "lat": 52.3744642,
+    "lon": 4.900988
+  },
+  "Kloveniersburgwal 18, Amsterdam, NL": {
+    "lat": 52.3717598,
+    "lon": 4.8990698
+  },
+  "Nieuwe Doelenstraat 15, Amsterdam, NL": {
+    "lat": 52.3682485,
+    "lon": 4.8953887
+  },
+  "Mauritskade 61, Amsterdam, NL": {
+    "lat": 52.3620662,
+    "lon": 4.9200604
+  },
+  "Utrechtsestraat 38, Amsterdam, NL": {
+    "lat": 52.3642597,
+    "lon": 4.898002
+  },
+  "Paulus Potterstraat 36, Amsterdam, NL": {
+    "lat": 52.3586831,
+    "lon": 4.8799195
+  },
+  "Gedempt Hamerkanaal 83, Amsterdam, NL": {
+    "lat": 52.3839127,
+    "lon": 4.9217565
+  },
+  "Schaafstraat 8, Amsterdam, NL": {
+    "lat": 52.3851027,
+    "lon": 4.9249755
+  },
+  "Ankerweg 6, Amsterdam, NL": {
+    "lat": 52.4170581,
+    "lon": 4.8297344
+  },
+  "Bornhout, Westpoort, NL": {
+    "lat": null,
+    "lon": null
+  },
+  "Herwijk, Zaandam, NL": {
+    "lat": null,
+    "lon": null
+  },
+  "Jan Evertsenstraat 22, Amsterdam, NL": {
+    "lat": 52.3693562,
+    "lon": 4.8450334
+  },
+  "De Clercqstraat 38, Amsterdam, NL": {
+    "lat": 52.3712734,
+    "lon": 4.8711262
+  },
+  "Stadhouderskade 7, Amsterdam, NL": {
+    "lat": 52.3629726,
+    "lon": 4.8796087
+  },
+  "Eerste Sweelinckstraat 1, Amsterdam, NL": {
+    "lat": 52.3560266,
+    "lon": 4.8979022
+  },
+  "Marie Heinekenplein 33, Amsterdam, NL": {
+    "lat": 52.3569168,
+    "lon": 4.8916761
+  },
+  "Leo Smitstraat 8, Amsterdam, NL": {
+    "lat": 52.3357154,
+    "lon": 4.8748265
+  },
+  "Jacob Van Lennepstraat 66, Amsterdam, NL": {
+    "lat": 52.3663296,
+    "lon": 4.8730782
+  },
+  "Paulus Potterstraat 44, Amsterdam, NL": {
+    "lat": 52.3585916,
+    "lon": 4.8795242
+  },
+  "Quellijnstraat 87, Amsterdam, NL": {
+    "lat": 52.3567767,
+    "lon": 4.8924039
+  },
+  "Spaklerweg 18, Amsterdam, NL": {
+    "lat": 52.3382672,
+    "lon": 4.9209466
+  },
+  "Jarmuiden 32, Amsterdam, NL": {
+    "lat": 52.3911293,
+    "lon": 4.7905887
+  },
+  "Portsmuiden 3, Amsterdam, NL": {
+    "lat": 52.3909384,
+    "lon": 4.7855015
+  },
+  "Prins Hendrikkade 80, Amsterdam, NL": {
+    "lat": 52.3766946,
+    "lon": 4.901375
+  },
+  "Oudezijds Voorburgwal 199, Amsterdam, NL": {
+    "lat": 52.3705839,
+    "lon": 4.8950545
+  },
+  "Danie Theronstraat 37, Amsterdam, NL": {
+    "lat": 52.3517478,
+    "lon": 4.9156065
+  },
+  "Stephensonstraat 15, Amsterdam, NL": {
+    "lat": 52.3509649,
+    "lon": 4.9210898
+  },
+  "Wibautstraat 115, Amsterdam, NL": {
+    "lat": 52.3558867,
+    "lon": 4.9121129
+  },
+  "Singel 456, Amsterdam, NL": {
+    "lat": 52.3676274,
+    "lon": 4.8887296
+  },
+  "Bos En Lommerweg 99, Amsterdam, NL": {
+    "lat": 52.3819372,
+    "lon": 4.8559625
+  },
+  "Overtoom 299, Amsterdam, NL": {
+    "lat": 52.3601586,
+    "lon": 4.8657655
+  },
+  "Reestraat 2, Amsterdam, NL": {
+    "lat": 52.3723083,
+    "lon": 4.8840954
+  },
+  "Rozengracht 104, Amsterdam, NL": {
+    "lat": 52.3732684,
+    "lon": 4.8794588
+  },
+  "Nieuwezijds Voorburgwal 346, Amsterdam, NL": {
+    "lat": 52.3690672,
+    "lon": 4.8891393
+  },
+  "Hekelveld 2, Amsterdam, NL": {
+    "lat": 52.3778221,
+    "lon": 4.895512
+  },
+  "Bilderdijkstraat 87, Amsterdam, NL": {
+    "lat": 52.3694746,
+    "lon": 4.8709422
+  },
+  "Hugo De Grootplein 15, Amsterdam, NL": {
+    "lat": 52.374273,
+    "lon": 4.8727658
+  },
+  "Paulus Potterstraat 32, Amsterdam, NL": {
+    "lat": 52.3587287,
+    "lon": 4.8800658
+  },
+  "Van Woustraat 111, Amsterdam, NL": {
+    "lat": 52.3538524,
+    "lon": 4.9022243
+  },
+  "Ferdinand Bolstraat 5, Amsterdam, NL": {
+    "lat": 52.3500108,
+    "lon": 4.891254
+  },
+  "Lange Leidsedwarsstraat 106, Amsterdam, NL": {
+    "lat": 52.3639604,
+    "lon": 4.8844692
+  },
+  "Leidsestraat 96, Amsterdam, NL": {
+    "lat": 52.3647338,
+    "lon": 4.8836169
+  },
+  "Korte Leidsedwarsstraat 95, Amsterdam, NL": {
+    "lat": 52.3637611,
+    "lon": 4.8841044
+  },
+  "Singel 286, Amsterdam, NL": {
+    "lat": 52.3426863,
+    "lon": 4.7914972
+  },
+  "Nieuwezijds Voorburgwal 381, Amsterdam, NL": {
+    "lat": 52.3691677,
+    "lon": 4.889476
+  },
+  "Nes 104, Amsterdam, NL": {
+    "lat": 52.3700105,
+    "lon": 4.8933429
+  },
+  "Nes 59, Amsterdam, NL": {
+    "lat": 52.370407,
+    "lon": 4.8935883
+  },
+  "Oudezijds Voorburgwal 226, Amsterdam, NL": {
+    "lat": 52.3723948,
+    "lon": 4.8961064
+  },
+  "Zeedijk 43, Amsterdam, NL": {
+    "lat": 52.3753127,
+    "lon": 4.9012627
+  },
+  "Aurora, Leiderdorp, NL": {
+    "lat": 52.1601977,
+    "lon": 4.5551878
+  },
+  "Hoogstraat 192, Schiedam, NL": {
+    "lat": 51.9179981,
+    "lon": 4.397762
+  },
+  "Zwaanshals 264, Rotterdam, NL": {
+    "lat": 51.9337465,
+    "lon": 4.486322
+  },
+  "Wilhelminakade 123, Rotterdam, NL": {
+    "lat": 51.9071754,
+    "lon": 4.4894079
+  },
+  "Leuvehaven 73, Rotterdam, NL": {
+    "lat": 51.9144991,
+    "lon": 4.4824171
+  },
+  "Van Vollenhovenstraat 23, Rotterdam, NL": {
+    "lat": 51.9097224,
+    "lon": 4.4780018
+  },
+  "'S-Gravendijkwal 138, Rotterdam, NL": {
+    "lat": 51.9130604,
+    "lon": 4.4640622
+  },
+  "Heemraadssingel 248, Rotterdam, NL": {
+    "lat": 51.9131979,
+    "lon": 4.4562802
+  },
+  "Mauritsweg 33, Rotterdam, NL": {
+    "lat": 51.9191015,
+    "lon": 4.4725166
+  },
+  "Hermesplantsoen 3, Rotterdam, NL": {
+    "lat": 51.9172972,
+    "lon": 4.4726556
+  },
+  "Hartmansstraat 24, Rotterdam, NL": {
+    "lat": 51.9163979,
+    "lon": 4.4783675
+  },
+  "Hoogstraat 67, Rotterdam, NL": {
+    "lat": 51.922613,
+    "lon": 4.4924922
+  },
+  "Hoogstraat 61, Rotterdam, NL": {
+    "lat": 51.9226996,
+    "lon": 4.492763
+  },
+  "Goudsesingel 41, Rotterdam, NL": {
+    "lat": 51.9242632,
+    "lon": 4.4932265
+  },
+  "Pannekoekstraat 88, Rotterdam, NL": {
+    "lat": 51.9223583,
+    "lon": 4.4887977
+  },
+  "Haagseveer 60, Rotterdam, NL": {
+    "lat": 51.9230105,
+    "lon": 4.4816012
+  },
+  "Voorburgstraat 292, Rotterdam, NL": {
+    "lat": 51.9325087,
+    "lon": 4.4706304
+  },
+  "Rijksweg A13 200, Delft, NL": {
+    "lat": 51.9832841,
+    "lon": 4.3937334
+  }
+}
