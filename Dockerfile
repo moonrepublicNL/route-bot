@@ -12,5 +12,4 @@ COPY . .
 
 ENV PYTHONUNBUFFERED=1
 
-# Start de Flask-app (server.py gebruikt zelf de PORT env var)
-CMD ["python", "server.py"]
+CMD gunicorn -w 2 -b 0.0.0.0:$PORT server:app
