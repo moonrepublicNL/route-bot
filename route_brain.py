@@ -1,16 +1,40 @@
 import os
 import json
 import random
-import re # Nodig voor JSON-parsing
+import re
 from pathlib import Path
-from openai import OpenAI # Importeer de klasse, maar initialiseer nog niet
-import datetime # Nodig voor get_weekday
+from openai import OpenAI
+import datetime
 
 BASE = Path(__file__).parent
 TRAINING_JSON = BASE / "data" / "routes_training.json"
 
-# De client wordt NIET meer hier geïnitialiseerd om crash bij opstarten te voorkomen
-# client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY")) # <-- VERWIJDERD
+# GLOBALE CACHE: Deze variabele voorkomt dat de grote JSON bij elke aanroep van de functie opnieuw wordt ingeladen.
+_TRAINING_CACHE = None 
+# De client initialisatie is al correct verwijderd (Lazy Load)
+
+# -------------------------------------------------
+# 1. Training-routes laden (LAZY LOAD FIX)
+# -------------------------------------------------
+def load_training_routes(path: Path, max_routes: int = 50):
+    global _TRAINING_CACHE 
+    
+    # Controleer of de data al in het geheugen zit
+    if _TRAINING_CACHE is not None:
+        # Geheugenbesparing: gebruik de cache i.p.v. schijf
+        return _TRAINING_CACHE 
+
+    # Laad de data vanaf disk (gebeurt maar 1 keer per worker, EN ALLEEN na het eerste API-verzoek)
+    print(f"Laden van grote JSON: {path}...")
+    with path.open("r", encoding="utf-8") as f:
+        routes = json.load(f)
+    
+    # Knip de routes af en sla op in de cache
+    if len(routes) > max_routes:
+        routes = random.sample(routes, max_routes)
+        
+    _TRAINING_CACHE = routes # Opslaan in de cache
+    return routes
 
 # -------------------------------------------------
 # Utility Functies (Onveranderd)
@@ -27,42 +51,31 @@ def validate_and_fix(new_request, llm_result):
 
     result = llm_result.get("bus_routes", {})
 
-    # Als structure ontbreekt → volledige fallback
     if not isinstance(result, dict):
         return fallback(new_request)
 
-    # Verzamel alle geplande stops
     planned = []
     for bus, arr in result.items():
         if isinstance(arr, list):
             planned.extend(arr)
 
-    # 1. Duplicaten check
     if len(planned) != len(set(planned)):
         return fallback(new_request)
 
-    # 2. Check op ontbrekende adressen
     if set(planned) != set(required_stops):
         return fallback(new_request)
 
-    # 3. Max-stops per bus check
     for bus, arr in result.items():
         if len(arr) > max_stops:
             return fallback(new_request)
 
-    # 4. Logica voor minimaal 8 stops per route
-    # Maandag: altijd 1 route
-    weekday = get_weekday(new_request["date"])  # 0 = maandag
+    weekday = get_weekday(new_request["date"])
     if weekday == 0:
-        # maandag → alles in Ocho, Rebel leeg
         return force_single_route(new_request)
 
-    # Niet maandag → 2 routes mogen, maar alleen als beide >= 8 stops
     if len(required_stops) < 16:
-        # nooit 2 routes bij minder dan 16 stops
         return force_single_route(new_request)
 
-    # 5. Indien 2 routes, maar 1 route < 8 stops → fallback naar 1 bus
     filled_buses = {bus: arr for bus, arr in result.items() if len(arr) > 0}
     if len(filled_buses) == 2:
         arr1 = list(filled_buses.values())[0]
@@ -70,7 +83,7 @@ def validate_and_fix(new_request, llm_result):
         if len(arr1) < 8 or len(arr2) < 8:
             return force_single_route(new_request)
 
-    return llm_result  # geldig
+    return llm_result
 
 
 def fallback(new_request):
@@ -97,18 +110,7 @@ def force_single_route(new_request):
 
 def get_weekday(date_str):
     y, m, d = map(int, date_str.split("-"))
-    return datetime.date(y, m, d).weekday()  # 0 = maandag
-
-
-# -------------------------------------------------
-# 1. Training-routes laden (Onveranderd)
-# -------------------------------------------------
-def load_training_routes(path: Path, max_routes: int = 50):
-    with path.open("r", encoding="utf-8") as f:
-        routes = json.load(f)
-    if len(routes) > max_routes:
-        routes = random.sample(routes, max_routes)
-    return routes
+    return datetime.date(y, m, d).weekday()
 
 
 # -------------------------------------------------
@@ -233,7 +235,6 @@ def call_llm(prompt: str) -> dict:
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         print("ERROR: OPENAI_API_KEY is niet ingesteld in de omgeving.")
-        # Dit geeft een 500-error, maar de server blijft op /health werken
         raise ValueError("OpenAI API key ontbreekt. Check Railway Variables.")
     
     client = OpenAI(api_key=api_key)
@@ -241,20 +242,17 @@ def call_llm(prompt: str) -> dict:
     # 2. Moderne OpenAI Call
     try:
         completion = client.chat.completions.create(
-            # Let op: model naam moet kloppen met wat je gebruikt (gpt-4o-mini is goed)
             model="gpt-4o-mini",
             messages=[
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            # Forceer JSON output, dit maakt regex parsen vaak overbodig
             response_format={"type": "json_object"}
         )
         raw = completion.choices[0].message.content
 
     except Exception as e:
         print(f"LLM API Call Error: {e}")
-        # Val terug naar de harde fallback
         return {
             "bus_routes": {
                 "Ocho": ["API Error Fallback"],
@@ -264,17 +262,15 @@ def call_llm(prompt: str) -> dict:
 
     # 3. JSON Parising
     try:
-        # Als response_format={"type": "json_object"} is gebruikt, is dit direct JSON
         return json.loads(raw)
     except Exception:
-        # Als de LLM zich niet aan het JSON-formaat hield (fallback logica)
         m = re.search(r"\{[\s\S]*\}", raw)
         if m:
             json_str = m.group(0)
             try:
                 return json.loads(json_str)
             except Exception:
-                pass # Kan het JSON-blok niet parsen
+                pass 
 
         print("Kon model-output niet parsen. Ruwe output:")
         print(raw)
@@ -287,13 +283,14 @@ def call_llm(prompt: str) -> dict:
 
 
 # -------------------------------------------------
-# 5. Publieke functie voor server/app (Onveranderd)
+# 5. Publieke functie voor server/app 
 # -------------------------------------------------
 def optimize_route(new_request: dict) -> dict:
     if not TRAINING_JSON.exists():
         raise FileNotFoundError(f"Training JSON ontbreekt: {TRAINING_JSON}")
 
-    training_routes = load_training_routes(TRAINING_JSON, max_routes=50)
+    # load_training_routes zal nu de cache/lazily data inladen
+    training_routes = load_training_routes(TRAINING_JSON, max_routes=50) 
     examples = build_examples(training_routes, num_examples=3)
     prompt = build_prompt(examples, new_request)
     raw = call_llm(prompt)
@@ -302,7 +299,7 @@ def optimize_route(new_request: dict) -> dict:
 
 
 # -------------------------------------------------
-# 6. CLI-test (Onveranderd)
+# 6. CLI-test
 # -------------------------------------------------
 def main():
     test_request = {

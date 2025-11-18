@@ -1,17 +1,17 @@
 # Gebruik een lichte Python image
-FROM python:3.9-slim
+FROM python:3.11-slim
 
-# Zet de werkmap in de container
+# Werkdirectory in de container
 WORKDIR /app
 
-# Kopieer eerst requirements (voor caching snelheid)
+# Dependencies installeren
 COPY requirements.txt .
-
-# Installeer dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Kopieer nu pas de rest van je code
+# Code kopiëren
 COPY . .
 
-# Timeout verhogen naar 120 seconden voor OpenAI requests.
-CMD gunicorn -w 2 --timeout 120 -b 0.0.0.0:$PORT server:app
+ENV PYTHONUNBUFFERED=1
+
+# --- FIX: WERKERS NAAR 1 (OOM FIX) en TIMEOUT NAAR 120s ---
+CMD gunicorn -w 1 --timeout 120 -b 0.0.0.0:$PORT server:app
