@@ -1,15 +1,20 @@
 import os
 import json
 import random
+import re # Nodig voor JSON-parsing
 from pathlib import Path
-from openai import OpenAI
+from openai import OpenAI # Importeer de klasse, maar initialiseer nog niet
+import datetime # Nodig voor get_weekday
 
 BASE = Path(__file__).parent
 TRAINING_JSON = BASE / "data" / "routes_training.json"
 
-# OpenAI client (API key via env)
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+# De client wordt NIET meer hier geïnitialiseerd om crash bij opstarten te voorkomen
+# client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY")) # <-- VERWIJDERD
 
+# -------------------------------------------------
+# Utility Functies (Onveranderd)
+# -------------------------------------------------
 def validate_and_fix(new_request, llm_result):
     """
     new_request: originele input van de app
@@ -91,13 +96,12 @@ def force_single_route(new_request):
 
 
 def get_weekday(date_str):
-    import datetime
     y, m, d = map(int, date_str.split("-"))
     return datetime.date(y, m, d).weekday()  # 0 = maandag
 
 
 # -------------------------------------------------
-# 1. Training-routes laden
+# 1. Training-routes laden (Onveranderd)
 # -------------------------------------------------
 def load_training_routes(path: Path, max_routes: int = 50):
     with path.open("r", encoding="utf-8") as f:
@@ -108,7 +112,7 @@ def load_training_routes(path: Path, max_routes: int = 50):
 
 
 # -------------------------------------------------
-# 2. Voorbeelden uit trainingsdata bouwen
+# 2. Voorbeelden uit trainingsdata bouwen (Onveranderd)
 # -------------------------------------------------
 def build_examples(training_routes, num_examples: int = 3):
     """
@@ -128,7 +132,7 @@ def build_examples(training_routes, num_examples: int = 3):
 
 
 # -------------------------------------------------
-# 3. Prompt bouwen
+# 3. Prompt bouwen (Onveranderd)
 # -------------------------------------------------
 def build_prompt(examples, new_request):
     """
@@ -217,99 +221,73 @@ def build_prompt(examples, new_request):
     return "\n".join(parts)
 
 
-    # ------------------------------------------------------------
-    # VOORBEELDEN OP BASIS VAN TRAININGSDATA
-    # ------------------------------------------------------------
-    parts.append("\nVOORBEELDEN UIT HET VERLEDEN:\n")
-    for ex in examples:
-        parts.append(
-            f"- Datum: {ex['date']}, Bus: {ex['bus_name']}\n"
-            f"  Route: " + " -> ".join(ex["historical_stops"])
-        )
-
-    # ------------------------------------------------------------
-    # NIEUWE AANVRAAG
-    # ------------------------------------------------------------
-    parts.append("\nNIEUWE AANVRAAG:\n")
-    parts.append(f"Datum: {new_request['date']}")
-    parts.append("Bussen: " + ", ".join(new_request["buses"]))
-    parts.append("Max stops per bus: " + str(new_request["max_stops_per_bus"]))
-
-    parts.append("Adressen:")
-    for s in new_request["stops"]:
-        addr = s["address"]
-        colli = s.get("colli")
-        if colli is not None:
-            parts.append(f"- {addr} (colli: {colli})")
-        else:
-            parts.append(f"- {addr}")
-
-    # ------------------------------------------------------------
-    # JSON-FORMAAT
-    # ------------------------------------------------------------
-    parts.append(
-        "\nAntwoord uitsluitend in dit JSON-formaat:\n"
-        "{\n"
-        '  "bus_routes": {\n'
-        '    "Ocho": ["adres 1", "adres 2", ...],\n'
-        '    "Rebel": ["adres 3", "adres 4", ...]\n'
-        "  }\n"
-        "}\n"
-    )
-
-    return "\n".join(parts)
-
-
-
-
 # -------------------------------------------------
-# 4. LLM-call
+# 4. LLM-call (GECORRIGEERDE FUNCTIE)
 # -------------------------------------------------
 def call_llm(prompt: str) -> dict:
-    import re
-
     print("=== PROMPT AAN LLM ===")
     print(prompt)
     print("=== EINDE PROMPT ===")
 
-    resp = client.responses.create(
-        model="gpt-4.1-mini",   # of ander 4.1-model dat je gebruikt
-        input=prompt,
-        max_output_tokens=512,
-    )
+    # 1. API Key Check & Lazy Initialisatie
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        print("ERROR: OPENAI_API_KEY is niet ingesteld in de omgeving.")
+        # Dit geeft een 500-error, maar de server blijft op /health werken
+        raise ValueError("OpenAI API key ontbreekt. Check Railway Variables.")
+    
+    client = OpenAI(api_key=api_key)
 
-    # tekst uit Responses API
-    raw = resp.output[0].content[0].text
-
-    # probeer eerst direct JSON
+    # 2. Moderne OpenAI Call
     try:
+        completion = client.chat.completions.create(
+            # Let op: model naam moet kloppen met wat je gebruikt (gpt-4o-mini is goed)
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            # Forceer JSON output, dit maakt regex parsen vaak overbodig
+            response_format={"type": "json_object"}
+        )
+        raw = completion.choices[0].message.content
+
+    except Exception as e:
+        print(f"LLM API Call Error: {e}")
+        # Val terug naar de harde fallback
+        return {
+            "bus_routes": {
+                "Ocho": ["API Error Fallback"],
+                "Rebel": []
+            }
+        }
+
+    # 3. JSON Parising
+    try:
+        # Als response_format={"type": "json_object"} is gebruikt, is dit direct JSON
         return json.loads(raw)
     except Exception:
-        pass
+        # Als de LLM zich niet aan het JSON-formaat hield (fallback logica)
+        m = re.search(r"\{[\s\S]*\}", raw)
+        if m:
+            json_str = m.group(0)
+            try:
+                return json.loads(json_str)
+            except Exception:
+                pass # Kan het JSON-blok niet parsen
 
-    # probeer JSON-blok te isoleren
-    m = re.search(r"\{[\s\S]*\}", raw)
-    if m:
-        json_str = m.group(0)
-        try:
-            return json.loads(json_str)
-        except Exception:
-            print("JSON-blok gevonden maar niet parsebaar:")
-            print(json_str)
-
-    # harde fallback
-    print("Kon model-output niet parsen. Ruwe output:")
-    print(raw)
-    return {
-        "bus_routes": {
-            "Ocho": [],
-            "Rebel": []
+        print("Kon model-output niet parsen. Ruwe output:")
+        print(raw)
+        return {
+            "bus_routes": {
+                "Ocho": ["Parsing Error Fallback"],
+                "Rebel": []
+            }
         }
-    }
 
 
 # -------------------------------------------------
-# 5. Publieke functie voor server/app
+# 5. Publieke functie voor server/app (Onveranderd)
 # -------------------------------------------------
 def optimize_route(new_request: dict) -> dict:
     if not TRAINING_JSON.exists():
@@ -323,9 +301,8 @@ def optimize_route(new_request: dict) -> dict:
     return clean
 
 
-
 # -------------------------------------------------
-# 6. CLI-test
+# 6. CLI-test (Onveranderd)
 # -------------------------------------------------
 def main():
     test_request = {
