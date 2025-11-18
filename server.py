@@ -3,12 +3,17 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from route_brain import optimize_route
 
-# Zorg dat OPENAI_API_KEY in je environment staat
+# Controleer of OPENAI_API_KEY aanwezig is
 if not os.environ.get("OPENAI_API_KEY"):
     raise RuntimeError("OPENAI_API_KEY is niet gezet in je environment.")
 
 app = Flask(__name__)
-CORS(app)  # sta CORS toe op alle routes
+CORS(app)  # CORS op alle routes
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
+
 
 @app.route("/optimize-route", methods=["POST", "OPTIONS"])
 @cross_origin()
