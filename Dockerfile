@@ -12,4 +12,4 @@ COPY . .
 
 ENV PYTHONUNBUFFERED=1
 
-CMD gunicorn -w 2 -b 0.0.0.0:$PORT server:app
+CMD gunicorn -w 2 --timeout 120 -b 0.0.0.0:$PORT server:app
