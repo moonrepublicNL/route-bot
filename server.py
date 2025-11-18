@@ -3,14 +3,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from route_brain import optimize_route
 
-# Controleer of OPENAI_API_KEY aanwezig is
-if not os.environ.get("OPENAI_API_KEY"):
-    raise RuntimeError("OPENAI_API_KEY is niet gezet in je environment.")
-
 app = Flask(__name__)
-CORS(app)  # CORS op alle routes
+CORS(app)  # sta CORS toe op alle routes
 
-@app.route("/health", methods=["GET"])
+
+@app.get("/health")
 def health():
     return jsonify({"status": "ok"}), 200
 
@@ -46,5 +43,6 @@ def optimize_route_endpoint():
 
 
 if __name__ == "__main__":
+    # alleen voor lokaal draaien; in Railway gebruiken we gunicorn
     port = int(os.environ.get("PORT", 8000))
     app.run(host="0.0.0.0", port=port, debug=False)
