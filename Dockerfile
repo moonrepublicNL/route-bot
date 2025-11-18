@@ -3,20 +3,14 @@ FROM python:3.11-slim
 # Werkdirectory in de container
 WORKDIR /app
 
-# Systeemdeps (optioneel, maar veilig voor requests/SSL enz.)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Python-deps installeren
+# Dependencies installeren
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Code kopiëren
 COPY . .
 
-# Railway zet zelf $PORT; val terug op 8000 voor lokaal
-ENV PORT=8000
+ENV PYTHONUNBUFFERED=1
 
-# Start de Flask app via gunicorn (production server)
-CMD ["sh", "-c", "gunicorn -b 0.0.0.0:${PORT:-8000} server:app"]
+# Start de Flask-app (server.py gebruikt zelf de PORT env var)
+CMD ["python", "server.py"]
